@@ -26,6 +26,7 @@ def test_check_plate_length():
     assert check_plate_length("123456") == True
     assert check_plate_length("1234567") == False
 
+
 def test_first_two_chars_are_letters():
     assert first_two_chars_are_letters("00") == False
     assert first_two_chars_are_letters("0A") == False
@@ -36,11 +37,13 @@ def test_first_two_chars_are_letters():
     assert first_two_chars_are_letters("AA") == None
     assert first_two_chars_are_letters("aa") == None
 
+
 def numbers_not_in_middle():
     assert numbers_not_in_middle("A0AAAA") == False
     assert numbers_not_in_middle("AA00AA") == False
     assert numbers_not_in_middle("AAAAA0A") == False
     assert numbers_not_in_middle("A0A") == False
+
 
 def test_first_digit_not_zero():
     assert first_digit_not_zero("A01") == False
