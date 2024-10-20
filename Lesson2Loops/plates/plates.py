@@ -1,5 +1,5 @@
 # This code was refactored from the code used in lesson 2
-# The reason was to break the code out into functions with single responsibility in line with "clean code" guidelines
+# The reason was to abstract the code out into functions with single responsibility in line with "clean code" guidelines
 # This also facilitates more discrete unit testing
 
 def main():
