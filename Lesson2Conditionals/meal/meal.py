@@ -5,3 +5,28 @@ In meal.py, implement a program that prompts the user for a time and outputs whe
 
 Structure your program per the below, wherein convert is a function (that can be called by main) that converts time, a str in 24-hour format, to the corresponding number of hours as a float. For instance, given a time like "7:30" (i.e., 7 hours and 30 minutes), convert should return 7.5 (i.e., 7.5 hours).
 """
+def main():
+
+    time = input("What time is it? ")
+
+    # Convert time for meal check
+    meal = convert(time)
+
+    # Check meal time
+    if 7 <= meal <= 8:
+        print("breakfast time")
+    elif 12 <= meal <= 13:
+        print("lunch time")
+    elif 18 <= meal <= 19:
+        print("dinner time")
+
+    # Convert time
+def convert(time):
+    hours, minutes = time.split(":")
+    minutes = float(minutes) / 60
+    time = float(hours) + minutes
+
+    return round(time, 2)
+
+if __name__ == "__main__":
+    main()
