@@ -21,7 +21,6 @@ def main():
         print("Invalid")
 
 
-
 def is_valid(s):
     """
     Check if a given string represents a valid plate number according to specific rules.
@@ -51,7 +50,6 @@ def is_valid(s):
         return True
 
 
-
 def check_plate_length(s):
     """
     Check if the length of the given string is within the valid range for a plate.
@@ -69,7 +67,6 @@ def check_plate_length(s):
         return False
     else:
         return True
-
 
 
 def first_two_chars_are_letters(s):
@@ -93,7 +90,6 @@ def first_two_chars_are_letters(s):
     for char in s:
         if char.isalpha() == False and char.isdigit() == False:
             return False
-
 
 
 def numbers_not_in_middle(s):
@@ -122,7 +118,6 @@ def numbers_not_in_middle(s):
             return False
 
 
-
 def first_digit_not_zero(s):
     """
     Check if the first digit in the given string is not zero.
@@ -141,8 +136,6 @@ def first_digit_not_zero(s):
             return False
         else:
             return True
-
-
 
 if __name__ == "__main__":
     main()
