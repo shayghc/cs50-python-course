@@ -18,6 +18,5 @@ def shorten(word):
 
     return altered_string
 
-
 if __name__ == "__main__":
     main()
