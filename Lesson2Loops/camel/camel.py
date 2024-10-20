@@ -6,3 +6,16 @@ Python, by contrast, recommends snake case, whereby words are instead separated 
 In a file called camel.py, implement a program that prompts the user for the name of a variable in camel case and outputs the corresponding name in snake case. Assume that the user’s input will indeed be in camel case.
 """
 
+# Get input string in camelCase
+camelCase = input("camelCase: ")
+snake_case = ""
+# Iterate over the characters in the string
+for char in camelCase:
+    # If char is lowercase, append to snake_case
+    if char.islower():
+        snake_case = snake_case + char
+    # If char is uppercase, insert an underscore and then the char in lowercase
+    else:
+        snake_case = snake_case + "_" + char.lower()
+# Print out the coverted string
+print(snake_case)
