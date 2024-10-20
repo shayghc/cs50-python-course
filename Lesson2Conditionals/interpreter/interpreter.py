@@ -5,3 +5,21 @@ x is an integer
 y is +, -, *, or /
 z is an integer
 """
+def main():
+    # Separate elements
+    x, y, z = input("Expression: ").split(" ")
+    x = float(x)
+    z = float(z)
+
+    # Calculate result
+    match y:
+        case "+":
+            print(round(x + z, 1))
+        case "-":
+            print(round(x - z, 1))
+        case "/":
+            print(round(x / z, 1))
+        case "*":
+            print(round(x * z, 1))
+
+main()
