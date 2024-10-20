@@ -41,7 +41,7 @@ def main():
         # Capturing the entire string initially allows us to perform checks for reject conditions
         user_date = input("Date:").strip()
         month, day, year = user_date.replace("/", " ").replace(",", "").split(" ")
-        # This line is not required for the problem set but will correct any month input with a different case than the format of the months in the list
+        # This line will correct any text month input with a different case than the format of the months in the list
         month = month.lower().capitalize()
 
         # Check for reject conditions
