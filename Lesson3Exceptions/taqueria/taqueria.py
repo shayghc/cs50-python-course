@@ -3,7 +3,7 @@ In a file called taqueria.py, implement a program that enables a user to place a
 """
 
 d = {
-    "Baja Taco": 4.00,
+    "Baja Taco": 4.25,
     "Burrito": 7.50,
     "Bowl": 8.50,
     "Nachos": 11.00,
