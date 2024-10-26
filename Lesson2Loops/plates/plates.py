@@ -15,12 +15,12 @@ def is_valid(s):
     # Validate the vanity plate according to the specified requirements.
     return (check_plate_length(s) 
             and first_two_chars_are_letters(s) 
-            and numbers_not_in_middle(s)
+            and numbers_not_in_middle(s) 
             and no_punctuation(s))
 
 
 def check_plate_length(s):
-    Check if the string length is between 2 and 6 characters.
+    # Check if the string length is between 2 and 6 characters.
     return 2 <= len(s) <= 6
 
 
@@ -30,22 +30,21 @@ def first_two_chars_are_letters(s):
 
 
 def numbers_not_in_middle(s):
-    # Check if numbers (if any) are at the end of the string and no letters appear after them.
     found_digit = False  # Flag to indicate if a digit has been found
+    first_digit = True  # Flag to check if this is the first digit
+
     for char in s:
         if char.isdigit():
-            # If we encounter a digit, we set the found_digit flag
+            if first_digit and char == '0':
+                return False  # The first digit should not be '0'
             found_digit = True
-            # The first digit must never be '0'
-            if char == '0':
-                return False
-        elif found_digit:
-            # If we've found a digit, there should be no letters after it
-            if char.isalpha():
-                return False
-    return True
+            first_digit = False  # Now that we've found a digit, it's not the first anymore
+        elif found_digit and char.isalpha():
+            return False  # Letters should not appear after digits
 
-def no_punctualtion(s):
+    return True  # All checks passed
+
+def no_punctuation(s):
     # Check that all characters in the string are alpha or digit - no punctuation
     return s.isalnum()
 

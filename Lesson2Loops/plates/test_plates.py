@@ -34,8 +34,8 @@ def test_first_two_chars_are_letters():
     assert first_two_chars_are_letters(".A") == False
     assert first_two_chars_are_letters("A.") == False
     assert first_two_chars_are_letters("..") == False
-    assert first_two_chars_are_letters("AA") == None
-    assert first_two_chars_are_letters("aa") == None
+    assert first_two_chars_are_letters("AA") == True
+    assert first_two_chars_are_letters("aa") == True
 
 
 def test_numbers_not_in_middle():
