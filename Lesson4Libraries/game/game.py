@@ -23,5 +23,7 @@ while True:
             else:
                 print("Just right!")
                 break
+        elif guess > level:
+            print("Too large!")
     except:
         pass
