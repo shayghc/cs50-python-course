@@ -1,0 +1,4 @@
+You can use the --junitxml option to save pytest results in XML format, which can be useful for CI/CD pipelines or detailed reports:
+
+
+pytest --junitxml=results.xml -v <test file name>
