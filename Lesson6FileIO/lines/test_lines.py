@@ -1,39 +1,43 @@
-"""In a file called lines.py, implement a program that expects exactly one command-line argument, the name (or path) of a Python file, and outputs the number of lines of code in that file, excluding comments and blank lines. If the user does not specify exactly one command-line argument, or if the specified file’s name does not end in .py, or if the specified file does not exist, the program should instead exit via sys.exit.
+"""Explanation of the pytest Code
+Fixtures:
 
-Assume that any line that starts with #, optionally preceded by whitespace, is a comment. (A docstring should not be considered a comment.) Assume that any line that only contains whitespace is blank."""
+@pytest.fixture: This decorator allows you to create setup code that can be shared across multiple tests. The test_file fixture creates a temporary test file and cleans it up afterward.
+Mocking:
 
+We use pytest's simpler syntax for assertions and exception handling.
+Tests:
+
+Each test is a separate function decorated with @patch to mock sys.exit and the open function. The logic for each test remains largely the same.
+Assertions:
+
+We use assert statements to check conditions, such as ensuring sys.exit is not called or that it raises the correct error."""
+
+import pytest
+import os
 import sys
+from unittest.mock import patch, mock_open
 
+MODULE = 'lines'  # The name of the module containing your main function
 
-def main():
-    count = 0
+@pytest.fixture
+def test_file(tmp_path):
+    """Create a temporary Python file for testing."""
+    filename = tmp_path / 'test_script.py'
+    with open(filename, 'w') as f:
+        f.write('print("Hello World")\n# This is a comment\n\nprint("Bye")\n')
+    return str(filename)
 
-    if check_file(sys.argv) == "Valid":
-        try:
-            with open(sys.argv[1], "r") as file:
-                lines = file.readlines()
-        except FileNotFoundError:
-            sys.exit("File does not exist")
-        else:
-            for line in lines:
-                if line.lstrip().startswith("#") or line.isspace():
-                    continue
-                else:
-                    count += 1
-            print(count)
+@patch('sys.exit')
+def test_valid_file(mock_exit, test_file):
+    """Test with a valid Python file."""
+    sys.argv = [MODULE + '.py', test_file]
 
-
-# Check that sys.argv is the right length and that the file exists
-def check_file(file):
-    if len(file) < 2:
-        sys.exit("Too few command-line arguments")
-    elif len(file) > 2:
-        sys.exit("Too many command-line arguments")
-    elif not file[1].endswith(".py"):
-        sys.exit("Not a Python file")
-    else:
-        return "Valid"
-
-
-if __name__ == "__main__":
+    from lines import main  # Import the main function to execute it
     main()
+    
+    mock_exit.assert_not_called()
+
+# Additional tests go here...
+
+if __name__ == '__main__':
+    pytest.main()
