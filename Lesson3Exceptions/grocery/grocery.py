@@ -3,25 +3,29 @@ In a file called grocery.py, implement a program that prompts the user for items
 """
 
 def main():
+    """Main function to create a grocery list from user input."""
     shopping_list = {}
 
     while True:
         try:
-            # Input an item
-            item = input("")
+            item = input("").strip()  # Read input and remove any leading/trailing whitespace
+            
+            # Treat input case-insensitively
+            item_upper = item.upper()  
 
-            if shopping_list.get(item): # If the item does exist, increment the value by one
-                shopping_list[item] += 1
+            # Increment item count in the shopping list
+            if item_upper in shopping_list:
+                shopping_list[item_upper] += 1
             else:
-                shopping_list[item] = 1 # If item does not exist, add the item with a value of 1
+                shopping_list[item_upper] = 1
         except EOFError:
             break
 
-    # Sort dict and capitalise keys
-    sorted_list = dict(sorted(shopping_list.items()))
-    capitals = {key.upper(): value for key, value in sorted_list.items()}
+    # Sort items and prepare to display the list
+    sorted_list = sorted(shopping_list.items())
 
-    for key, value in capitals.items():
-        print(f"{value} {key}")
+    for item, count in sorted_list:
+        print(f"{count} {item}")  # Print count and item
 
-main()
+if __name__ == "__main__":
+    main()
