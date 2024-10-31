@@ -9,15 +9,38 @@ import re
 
 def main():
     print(validate(input("IPv4 Address: ")))
+def main():
+    """
+    The main function is the entry point of the program.
+    It prompts the user to input an IPv4 address, validates it using the validate function,
+    and then prints the result.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    """
+    print(validate(input("IPv4 Address: ")))
 
 
 def validate(ip):
+    """
+    Validates if a given string is a valid IPv4 address.
+
+    Parameters:
+    ip (str): The string to be validated. It should be a string representation of an IPv4 address.
+
+    Returns:
+    bool: True if the input string is a valid IPv4 address, False otherwise.
+    """
     return bool(
         re.search(
             r"^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)$",
             ip,
         )
     )
+
 
 
 if __name__ == "__main__":
