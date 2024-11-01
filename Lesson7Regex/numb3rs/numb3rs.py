@@ -6,9 +6,7 @@ Structure numb3rs.py as follows, wherein you’re welcome to modify main and/or 
 
 import re
 
-
-def main():
-    print(validate(input("IPv4 Address: ")))
+C:\Users\sghco\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts
 def main():
     """
     The main function is the entry point of the program.
@@ -40,7 +38,6 @@ def validate(ip):
             ip,
         )
     )
-
 
 
 if __name__ == "__main__":
