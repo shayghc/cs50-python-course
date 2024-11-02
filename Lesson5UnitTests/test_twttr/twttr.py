@@ -3,7 +3,7 @@ def main():
 
 
 # shorten expects a str as input and returns that same str but with all vowels (A, E, I, O, and U) omitted, whether input in uppercase or lowercase.
-def shorten(word):
+def shorten(word: str) -> str:
     vowels = "AEIOUaeiou"
     altered_string = ""
 
