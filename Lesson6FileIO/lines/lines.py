@@ -6,7 +6,24 @@ import sys
 
 
 def main() -> None:
-    # Initate count
+    """
+    The main function of the program. It counts the number of lines of code in a specified Python file, excluding comments and blank lines.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+
+    The function performs the following steps:
+    1. Initiates a count variable to 0.
+    2. Validates the command line arguments using the validate_arguments function. If the arguments are not valid, the program exits.
+    3. Tries to open the specified file in read mode. If the file does not exist, the program exits with an appropriate error message.
+    4. Reads all lines from the file.
+    5. Iterates over each line, checking if it is a comment or a blank line. If it is not, increments the count variable.
+    6. Prints the final count of lines of code.
+    """
+    # Initiate count
     count = 0
     # Check that arguments are correct
     if not validate_arguments(sys.argv):
@@ -27,7 +44,17 @@ def main() -> None:
     print(count)
 
 
+
 def validate_arguments(args: list) -> bool:
+    """
+    Validates the command line arguments for the Python file.
+
+    Args:
+        args (list): A list of command line arguments. The first argument is the script name, and the second argument is the file name.
+
+    Returns:
+        bool: True if the arguments are valid, False otherwise. If the arguments are invalid, the program will exit with an appropriate error message.
+    """
     # Check if command line args are valid
     if len(args) != 2:
         if len(args) < 2:
@@ -39,6 +66,7 @@ def validate_arguments(args: list) -> bool:
         sys.exit("Not a Python file!")
 
     return True
+
 
 
 if __name__ == "__main__":
