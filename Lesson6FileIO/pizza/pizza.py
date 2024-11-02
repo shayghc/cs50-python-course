@@ -7,6 +7,19 @@ from tabulate import tabulate
 
 
 def main() -> None:
+    """
+    The main function of the pizza.py program. It reads a CSV file, validates its format,
+    and outputs a table formatted as ASCII art using the tabulate library.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+
+    Raises:
+    sys.exit: If the command-line argument is not a valid CSV file, or if the specified file does not exist.
+    """
     # Get table data
     if not check_file(sys.argv):
         return
@@ -30,14 +43,27 @@ def main() -> None:
     print(tabulate(table, headers=headers, tablefmt="grid"))
 
 
+
 def check_file(file: list) -> bool:
+    """
+    Check if the command-line argument is a valid CSV file.
+
+    Parameters:
+    file (list): A list containing the command-line arguments. The first element is the script name,
+    and the second element is the file name.
+
+    Returns:
+    bool: True if the file is a valid CSV file, False otherwise. If the file is not valid,
+    the program will exit with an appropriate error message.
+    """
     if len(file) != 2:
         sys.exit("Usage: python pizza.py <filename>.csv")
     elif not file[1].endswith(".csv"):
         sys.exit("Not a CSV file")
     elif not os.path.isfile(file[1]):
-        sys.exit("File does not exit")
+        sys.exit("File does not exist")
     return True
+
 
 
 if __name__ == "__main__":
